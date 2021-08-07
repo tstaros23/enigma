@@ -1,8 +1,14 @@
 class Enigma
 
   def encrypt(message, key, date)
+
   end
 
-  def decrypt
+  def decrypt(ciphertext, key, date)
+
+  end
+
+  def keys
+
   end
 end
