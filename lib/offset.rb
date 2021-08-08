@@ -1,4 +1,8 @@
 class Offset
+
+  def initialize
+    @date = generate_date
+  end
   def create_offset(date)
     hash_keys = %i[A B C D]
     numeric_form = date ** 2
@@ -7,6 +11,9 @@ class Offset
       num.to_i
     end
     offsets =  hash_keys.zip(digits).to_h
-    # require "pry"; binding.pry
+  end
+
+  def generate_date
+    Time.now.strftime("%m%d%y").to_i
   end
 end

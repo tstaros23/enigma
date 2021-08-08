@@ -1,5 +1,5 @@
 class Key
-  
+
   def initialize
     @key = generate_key
   end

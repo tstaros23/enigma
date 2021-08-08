@@ -8,6 +8,11 @@ RSpec.describe Offset do
 
     expect(offset).to be_a(Offset)
   end
+  it "has today's date" do
+    offset = Offset.new
+
+    expect(offset.generate_date).to eq(80821)
+  end
   it "can create an offset" do
     offset = Offset.new
 
