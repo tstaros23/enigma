@@ -29,18 +29,5 @@ RSpec.describe Enigma do
       )
 
     end
-
-    it "has keys" do
-      enigma = Enigma.new
-
-      expect(enigma.keys).to eq(
-        {
-          A: => 02,
-          B: => 27,
-          C: => 71,
-          D: => 20
-        }
-      )
-    end
   end
 end
