@@ -2,12 +2,12 @@ require './lib/key'
 require 'date'
 
 RSpec.describe Key do
-  xit "exists " do
+  it "exists " do
     key = Key.new
 
     expect(key).to be_a(Key)
   end
-  it "can create keys" do
+  it "can create shift keys" do
     key = Key.new
 
     expect(key.create_shift_keys("02715")).to eq(
@@ -18,5 +18,12 @@ RSpec.describe Key do
         :D => 15
       }
     )
+  end
+
+  it "can create a key" do
+    key = Key.new
+
+    allow(key).to receive(:generate_key).and_return("00000")
+    expect(key.generate_key).to eq("00000")
   end
 end
