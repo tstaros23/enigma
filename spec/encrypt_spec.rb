@@ -10,11 +10,11 @@ RSpec.describe Encrypt do
 
   it "can create shifts" do
     encrypt = Encrypt.new
-    key = Key.new
+    key = Key.create_shift_keys
     random_key = "02715"
     offset = Offset.new
 
-    key.create_shift_keys(random_key)
+    allow(encrypt.create_shifts)
     expect(encrypt.create_shifts).to eq()
   end
 end
