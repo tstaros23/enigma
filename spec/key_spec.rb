@@ -2,7 +2,7 @@ require './lib/key'
 require 'date'
 
 RSpec.describe Key do
-  it "exists " do
+  it "exists and has attributes" do
     key = Key.new
 
     expect(key).to be_a(Key)
