@@ -10,18 +10,18 @@ RSpec.describe Offset do
   end
   it "has today's date" do
     offset = Offset.new
-
-    expect(offset.generate_date).to eq(80821)
+    allow_any_instance_of(Offset).to receive(:generate_date).and_return(80821)
+    expect(Offset.generate_date).to eq(80821)
   end
   it "can create an offset" do
     offset = Offset.new
 
-    expect(offset.create_offset(40895)).to eq(
+    expect(Offset.create_offset).to eq(
       {
-        :A => 1,
+        :A => 4,
         :B => 0,
-        :C => 2,
-        :D => 5
+        :C => 4,
+        :D => 1
       }
     )
   end
