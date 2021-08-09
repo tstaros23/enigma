@@ -1,7 +1,10 @@
 class Enigma
 
   def encrypt(message, key, date)
-    Encrypt.new =
+    #create offset
+    #send message, key, date and offset to Encrypt.new
+
+    encrypter = Encrypt.new(message, key, offset)
   end
 
   def decrypt(ciphertext, key, date)

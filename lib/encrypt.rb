@@ -22,22 +22,18 @@ attr_reader :alphabet, :message, :key, :offset
 
 
 
-  # def shift_value(index)
-  #
-  #
-  # end
-
   def encrypt
     chars = @message.split("")
     ciphered = ""
+    shifts = create_shifts.values
 
     chars.each do |char|
       if @alphabet.include? char
-        index = @alphabet.index(char)
-        shifted = (index + 5) % 27
-        require "pry"; binding.pry
-        ciphered << @alphabet[shifted]
-        require "pry"; binding.pry
+
+          index = @alphabet.index(char)
+          shift_index = (index + shifts.first) % 27
+          ciphered << @alphabet[shift_index]
+          shifts = shifts.rotate
       end
     end
     ciphered
