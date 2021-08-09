@@ -1,21 +1,32 @@
 require './lib/key'
-class Encrypt
+require './lib/offset'
 
-  def initialize
+class Encrypt
+attr_reader :alphabet, :message, :key, :offset
+
+  def initialize(message, key, offset)
     @alphabet = (("a".."z").to_a << " ")
-    @random_key = Key.create_shift_keys
-    @offset = Offset.create_offset
+    @message = message.downcase
+    @random_key = key
+    @offset = offset
   end
+
+
   def create_shifts
       shifts = Hash.new
       @random_key.each do |key, value|
         shifts[key] = value + @offset[key]
       end
       shifts
-      require "pry"; binding.pry
-      4
   end
-  def encrypt
 
+
+
+  def shift_value(index)
+    @alphabet.rotate(index)
+
+  end
+
+  def encrypt
   end
 end
