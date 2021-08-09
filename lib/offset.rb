@@ -1,10 +1,8 @@
 class Offset
-  def initialize
-  end
 
   def create_offset(date)
     hash_keys = %i[A B C D]
-    numeric_form = date ** 2
+    numeric_form = date.to_i ** 2
     last_four_numbers = numeric_form.to_s.chars.last(4)
     digits = last_four_numbers.map do |num|
       num.to_i
@@ -14,6 +12,6 @@ class Offset
   end
 
   def generate_date
-    Time.now.strftime("%m%d%y").to_i
+    Time.now.strftime("%m%d%y")
   end
 end
