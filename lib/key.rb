@@ -1,8 +1,5 @@
 class Key
-  
-  def initialize
-    @key = generate_key
-  end
+
   def create_shift_keys(key)
     hash_keys = %i[A B C D]
     digit_sets = [key[0..1], key[1..2], key[2..3], key[3..4]]
@@ -14,7 +11,11 @@ class Key
 
   def generate_key
     generate = 5.times.map do
-      rand(0..9)
-    end.join
+      random_index.to_s
+    end.join.rjust(5, '0')
+  end
+
+  def random_index
+    rand(0..9)
   end
 end
