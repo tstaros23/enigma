@@ -34,8 +34,10 @@ attr_reader :alphabet, :message, :key, :offset
           index = @alphabet.index(char)
           shift_index = (index + shifts.first) % 27
           ciphered << @alphabet[shift_index]
-          shifts = shifts.rotate
+      else
+        ciphered << char
       end
+      shifts = shifts.rotate
     end
     ciphered
   end
