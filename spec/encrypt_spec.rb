@@ -48,7 +48,7 @@ RSpec.describe Encrypt do
     expect(encrypt.create_shifts).to eq(expected)
   end
 
-  it "can shift values of an alphabet" do
+  xit "can shift values of an alphabet" do
     key = "a"
     offset = "a"
 
@@ -73,13 +73,8 @@ RSpec.describe Encrypt do
       :D => 1
     }
     encrypt = Encrypt.new("hello world", key, offset )
-    # {
-    #   :A => 6,
-    #   :B => 27,
-    #   :C => 75,
-    #   :D => 16
-    # # }
-    expected = ""
+
+    expected = "nefau qdxly"
     expect(encrypt.encrypt).to eq(expected)
   end
 end
