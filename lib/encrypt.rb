@@ -1,6 +1,7 @@
 require './lib/key'
 require './lib/offset'
 
+
 class Encrypt
 attr_reader :alphabet, :message, :key, :offset
 
