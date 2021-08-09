@@ -5,16 +5,81 @@ require 'date'
 
 RSpec.describe Encrypt do
   it "exists" do
-    encrypt = Encrypt.new
+    key =   {
+        :A => 2,
+        :B => 27,
+        :C => 71,
+        :D => 15
+      }
+
+    offset = {
+      :A => 4,
+      :B => 0,
+      :C => 4,
+      :D => 1
+    }
+    encrypt = Encrypt.new("hello world", key, offset )
+
+    expect(encrypt).to be_a(Encrypt)
   end
 
   it "can create shifts" do
-    encrypt = Encrypt.new
-    key = Key.create_shift_keys
-    random_key = "02715"
-    offset = Offset.new
+    key =   {
+        :A => 2,
+        :B => 27,
+        :C => 71,
+        :D => 15
+      }
 
-    allow(encrypt.create_shifts)
-    expect(encrypt.create_shifts).to eq()
+    offset = {
+      :A => 4,
+      :B => 0,
+      :C => 4,
+      :D => 1
+    }
+    encrypt = Encrypt.new("hello world", key, offset )
+
+    expected = {
+      :A => 6,
+      :B => 27,
+      :C => 75,
+      :D => 16
+    }
+    expect(encrypt.create_shifts).to eq(expected)
+  end
+
+  it "can shift values of an alphabet" do
+    key = "a"
+    offset = "a"
+
+    encrypt = Encrypt.new("hello world", "a", "a" )
+    expected = ["c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ", "a", "b"]
+
+    expect(encrypt.shift_value(2)).to eq(expected)
+  end
+
+  it "can encrypt the message" do
+    key =   {
+        :A => 2,
+        :B => 27,
+        :C => 71,
+        :D => 15
+      }
+
+    offset = {
+      :A => 4,
+      :B => 0,
+      :C => 4,
+      :D => 1
+    }
+    encrypt = Encrypt.new("hello world", key, offset )
+    # {
+    #   :A => 6,
+    #   :B => 27,
+    #   :C => 75,
+    #   :D => 16
+    # # }
+    expected = ""
+    expect(encrypt.encrypt).to eq(expected)
   end
 end
