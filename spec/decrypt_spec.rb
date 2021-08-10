@@ -42,7 +42,7 @@ RSpec.describe Decrypt do
     decrypt = Decrypt.new("nefau qdxly", key, offset)
 
     expected = "hello world"
-    # "petnw dqzll"
+  
     expect(decrypt.decrypt).to eq(expected)
   end
 end
