@@ -3,25 +3,26 @@ require './lib/offset'
 require './lib/encrypt'
 
 class Decrypt
-  attr_reader :alphabet, :cyphertext, :key, :offset
+  attr_reader :alphabet, :message, :key_shifts, :offset
 
-  def initialize(cyphertext, key, offset)
+  def initialize(message, key_shifts, offset)
     @alphabet = (("a".."z").to_a << " ")
-    @cyphertext = cyphertext
-    @random_key = key
+    @message = message.downcase
+    @key_shifts = key_shifts
     @offset = offset
   end
 
+
   def create_shifts
       shifts = Hash.new
-      @random_key.each do |key, value|
+      @key_shifts.each do |key, value|
         shifts[key] = value + @offset[key]
       end
       shifts
   end
 
   def decrypt
-    chars = @cyphertext.split("")
+    chars = @message.split("")
     decrypted = ""
     shifts = create_shifts.values
 
