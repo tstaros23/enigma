@@ -48,16 +48,6 @@ RSpec.describe Encrypt do
     expect(encrypt.create_shifts).to eq(expected)
   end
 
-  xit "can shift values of an alphabet" do
-    key = "a"
-    offset = "a"
-
-    encrypt = Encrypt.new("hello world", "a", "a" )
-    expected = ["c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ", "a", "b"]
-
-    expect(encrypt.shift_value(2)).to eq(expected)
-  end
-
   it "can encrypt the message" do
     key =   {
         :A => 2,
