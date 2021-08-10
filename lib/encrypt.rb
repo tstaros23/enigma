@@ -5,17 +5,17 @@ require './lib/offset'
 class Encrypt
 attr_reader :alphabet, :message, :key, :offset
 
-  def initialize(message, key, offset)
+  def initialize(message, key_shifts, offset)
     @alphabet = (("a".."z").to_a << " ")
     @message = message.downcase
-    @random_key = key
+    @key_shifts = key_shifts
     @offset = offset
   end
 
 
   def create_shifts
       shifts = Hash.new
-      @random_key.each do |key, value|
+      @key_shifts.each do |key, value|
         shifts[key] = value + @offset[key]
       end
       shifts
@@ -34,8 +34,10 @@ attr_reader :alphabet, :message, :key, :offset
           index = @alphabet.index(char)
           shift_index = (index + shifts.first) % 27
           ciphered << @alphabet[shift_index]
-          shifts = shifts.rotate
+      else
+        ciphered << char
       end
+      shifts = shifts.rotate
     end
     ciphered
   end

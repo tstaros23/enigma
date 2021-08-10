@@ -72,9 +72,9 @@ RSpec.describe Encrypt do
       :C => 4,
       :D => 1
     }
-    encrypt = Encrypt.new("hello world", key, offset )
+    encrypt = Encrypt.new("hello world.", key, offset )
 
-    expected = "nefau qdxly"
+    expected = "nefau qdxly."
     expect(encrypt.encrypt).to eq(expected)
   end
 end
